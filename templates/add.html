@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Add Student{% endblock %}
+{% block content %}
+  <div class="panel">
+    <h1>Add a student</h1>
+    <p class="panel__hint">Each student needs a unique ID — the registrar will reject a duplicate.</p>
+
+    <form method="POST" class="form">
+      <label for="student_id">Student ID</label>
+      <input type="text" id="student_id" name="student_id" required autocomplete="off">
+
+      <label for="name">Full name</label>
+      <input type="text" id="name" name="name" required autocomplete="off">
+
+      <label for="course">Course</label>
+      <input type="text" id="course" name="course" required autocomplete="off">
+
+      <button type="submit" class="btn btn--primary">Add student</button>
+    </form>
+  </div>
+{% endblock %}

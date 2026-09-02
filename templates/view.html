@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}View Students{% endblock %}
+{% block content %}
+  <div class="panel panel--wide">
+    <h1>All students</h1>
+
+    {% if students %}
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+            <tr>
+              <td class="ledger__id">{{ student.StudentID }}</td>
+              <td>{{ student.Name }}</td>
+              <td>{{ student.Course }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="empty-state">No students on record yet. <a href="{{ url_for('add_student') }}">Add the first one.</a></p>
+    {% endif %}
+  </div>
+{% endblock %}

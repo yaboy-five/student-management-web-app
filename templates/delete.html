@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Delete Student{% endblock %}
+{% block content %}
+  <div class="panel">
+    <h1>Delete a student</h1>
+    <p class="panel__hint">This removes the record permanently — check the ID on the <a href="{{ url_for('view_students') }}">records page</a> first if you're not sure.</p>
+
+    <form method="POST" class="form">
+      <label for="student_id">Student ID</label>
+      <input type="text" id="student_id" name="student_id" required autocomplete="off">
+
+      <button type="submit" class="btn btn--danger">Delete student</button>
+    </form>
+  </div>
+{% endblock %}

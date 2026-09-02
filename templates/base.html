@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>{% block title %}Student Records{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=IBM+Plex+Mono:wght@500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <header class="spine">
+            <a class="spine__mark" href="{{ url_for('home') }}">Student Records</a>
+            <nav class="spine__nav">
+                <a href="{{ url_for('add_student') }}" class="{{ 'is-active' if request.endpoint == 'add_student' }}">Add Student</a>
+                <a href="{{ url_for('view_students') }}" class="{{ 'is-active' if request.endpoint == 'view_students' }}">View Students</a>
+                <a href="{{ url_for('delete_student') }}" class="{{ 'is-active' if request.endpoint == 'delete_student' }}">Delete Student</a>
+            </nav>
+        </header>
+
+        <main class="page">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-stack">
+                {% for category, message in messages %}
+                    <div class="flash flash--{{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+        
+            {% block content %}{% endblock %}
+        </main>
+</body>
+
+</html>

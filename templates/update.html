@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Update Student{% endblock %}
+{% block content %}
+  {% if student %}
+    <div class="panel">
+      <h1>Update {{ student.Name }}</h1>
+      <p class="panel__hint">Editing record <span class="ledger__id">{{ student.StudentID }}</span>. Change any field and save.</p>
+
+      <form method="POST" class="form">
+        <input type="hidden" name="student_id" value="{{ student.StudentID }}">
+
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" value="{{ student.Name }}" required autocomplete="off">
+
+        <label for="course">Course</label>
+        <input type="text" id="course" name="course" value="{{ student.Course }}" required autocomplete="off">
+
+        <button type="submit" class="btn btn--primary">Save changes</button>
+      </form>
+    </div>
+  {% else %}
+    <div class="panel">
+      <h1>Update a student</h1>
+      <p class="panel__hint">Look up a student by ID to edit their record.</p>
+
+      <form method="GET" class="form">
+        <label for="student_id">Student ID</label>
+        <input type="text" id="student_id" name="student_id" value="{{ searched_id }}" required autocomplete="off">
+
+        <button type="submit" class="btn btn--primary">Find student</button>
+      </form>
+    </div>
+  {% endif %}
+{% endblock %}
